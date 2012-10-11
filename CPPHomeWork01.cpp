@@ -2,45 +2,72 @@
 
 using namespace std;
 
+class Account;
+class Client;
+class Employee;
+
 typedef long int Date;
 typedef unsigned long long Decimal;
 
+/*
+ * Object of the Bank, contain all accounts,
+ * clients and transaction of this bank
+ */
 class Bank {
 public:
+  Bank() {}
+  ~Bank() {}
 
+  Transaction* createTransaction(Account* aSource, Account* aDest,
+      Decimal sum);
+
+  Client* addNewClient(string firstName, string secondName,
+      string dateOfBirth);
+
+  Employee* addNewEmployee(string firstName, string secondName, int levelAccess);
 private:
-  int m_totalAccounts;
-
+  vector<Transaction*> m_transactions;
   vector<Account*> m_accounts;
   vector<Client*> m_clients;
-}
+  vector<Employee*> m_employees;
+};
 
+/*
+ * Determine of transaction between two account in the bank
+ */
 class Transaction {
 public:
-  Transaction();
-  ~Transaction();
+  Transaction() {}
+  ~Transaction() {}
 private:
   Date m_dateOfOperation; 
   BankingAccount* m_sourceAccount;
   BankingAccount* m_destAccount;
 }
-
+/*
+ * Base class of all bank accounts
+ */
 class Account {
 public:
-  BankingAccount() {}
-  ~BankingAccount() {}
+  Account() {}
+  ~Account() {}
 
-  int debet(Date sum) {}
-  int drawal(Decimal sum) {}
+  void debet(Decimal sum) {}
+  void drawal(Decimal sum) {}
 private:
+  Bank* m_bankAccount;
 };
-
+/*
+ * Especiall for checking accounts
+ */
 class CheckingAccount : public Account {
 public:
   CheckingAccount() {}
   ~CheckingAccount() {}
 };
-
+/*
+ * Especiall for savings accounts
+ */
 class SavingsAccount : public Account {
 public:
   SavingsAccount() {}
@@ -69,12 +96,25 @@ private:
 class Client : public Person
 {
 public:
+  Client(const string& aFirstName, const string& aSecondName, int aDateBirth    ) : Person(aFirstName, aSecondName, aDateBirth) {}¬
 private:
+  /*
+   * All accounts of this client
+   */
+  
   vector<Account*> m_accounts; 
+  Bank* m_bank;
 };
 
 class Employee : public Client
 {
+public:
+  Employee() {}
+  ~Employee() {}
+  
+  int levelAccess() { return m_levelAccess; }
+private:
+  int m_levelAccess;
 }
 
 int main(int argc, char* argv[])
