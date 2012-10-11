@@ -2,22 +2,46 @@
 
 using namespace std;
 
-class BankingAccount {
+typedef long int Date;
+typedef unsigned long long Decimal;
+
+class Bank {
+public:
+
+private:
+  int m_totalAccounts;
+
+  vector<Account*> m_accounts;
+  vector<Client*> m_clients;
+}
+
+class Transaction {
+public:
+  Transaction();
+  ~Transaction();
+private:
+  Date m_dateOfOperation; 
+  BankingAccount* m_sourceAccount;
+  BankingAccount* m_destAccount;
+}
+
+class Account {
 public:
   BankingAccount() {}
   ~BankingAccount() {}
 
-  int debet(int sum) {} 
-
+  int debet(Date sum) {}
+  int drawal(Decimal sum) {}
+private:
 };
 
-class CheckingAccount : public BankingAccount {
+class CheckingAccount : public Account {
 public:
   CheckingAccount() {}
   ~CheckingAccount() {}
 };
 
-class SavingsAccount : public BankingAccount {
+class SavingsAccount : public Account {
 public:
   SavingsAccount() {}
   ~SavingsAccount() {}
@@ -44,7 +68,14 @@ private:
 
 class Client : public Person
 {
+public:
+private:
+  vector<Account*> m_accounts; 
 };
+
+class Employee : public Client
+{
+}
 
 int main(int argc, char* argv[])
 {
