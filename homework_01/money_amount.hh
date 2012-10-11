@@ -3,23 +3,23 @@
 
 class MoneyAmount {
 
-  public:
-    Currency currency;
-    Decimal amount;
+public:
+  Currency currency;
+  Decimal amount;
 
-	friend const MoneyAmount & operator + (const MoneyAmount &);
+  friend const MoneyAmount& operator+ (const MoneyAmount&);
 
-	friend const MoneyAmount & operator - (const MoneyAmount &);
+  friend const MoneyAmount& operator- (const MoneyAmount&);
 
-	friend const MoneyAmount operator + (const MoneyAmount &, const MoneyAmount &);
+  friend const MoneyAmount operator+ (const MoneyAmount&, const MoneyAmount&);
 
-	friend const MoneyAmount operator - (const MoneyAmount &, const MoneyAmount &);
+  friend const MoneyAmount operator- (const MoneyAmount&, const MoneyAmount&);
 
-	friend MoneyAmount & operator += (const MoneyAmount &, const MoneyAmount &);
+  friend MoneyAmount& operator+= (const MoneyAmount&, const MoneyAmount&);
 
-	friend MoneyAmount & operator -= (const MoneyAmount &, const MoneyAmount &);
+  friend MoneyAmount& operator-= (const MoneyAmount&, const MoneyAmount&);
 
-	friend bool operator == (const MoneyAmount &, const MoneyAmount &);
+  friend bool operator== (const MoneyAmount&, const MoneyAmount&);
 
 };
 
