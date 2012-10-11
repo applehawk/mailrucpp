@@ -1,4 +1,5 @@
 mailrucpp
 =========
 
-Andvanced C++ with MailRu
+Advanced C++ with Technopark Mail.Ru - http://tp.mail.ru/
+
