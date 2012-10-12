@@ -5,7 +5,7 @@
 
 class Currency{
 public:
-	Currency( std::string _name, double _value );
+	Currency( std::string, double );
 	std::string getName();
 	double getValue();
 
