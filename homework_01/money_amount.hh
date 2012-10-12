@@ -9,7 +9,7 @@ public:
 
   const MoneyAmount& operator+();
 
-  const MoneyAmount& operator-();
+  const MoneyAmount operator-();
 
   const string operator string();
 
