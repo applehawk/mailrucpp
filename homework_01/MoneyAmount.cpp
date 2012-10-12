@@ -7,12 +7,12 @@ MoneyAmount::MoneyAmount( const Currency &_currency, const Decimal _amount ) {
 }
 
 
-Decimal MoneyAmount::getAmount() {
+const Decimal MoneyAmount::getAmount() {
 	return amount;
 }
 
 
-const Currency& MoneyAmount::getAmount() {
+const Currency& MoneyAmount::getCurrency() {
 	return currency;
 }
 
