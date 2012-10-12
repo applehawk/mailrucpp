@@ -17,6 +17,12 @@ public:
 
   friend const MoneyAmount operator-(const MoneyAmount&, const MoneyAmount&);
 
+  friend const MoneyAmount operator*(const MoneyAmount&, double);
+
+  friend const MoneyAmount operator*(double, const MoneyAmount&);
+
+  friend const MoneyAmount operator/(const MoneyAmount&, double);
+
   friend MoneyAmount& operator+=(const MoneyAmount&, const MoneyAmount&);
 
   friend MoneyAmount& operator-=(const MoneyAmount&, const MoneyAmount&);
