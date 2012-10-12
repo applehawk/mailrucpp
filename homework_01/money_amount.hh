@@ -7,19 +7,21 @@ public:
   Currency currency;
   Decimal amount;
 
-  friend const MoneyAmount& operator+ (const MoneyAmount&);
+  const MoneyAmount& operator+();
 
-  friend const MoneyAmount& operator- (const MoneyAmount&);
+  const MoneyAmount& operator-();
 
-  friend const MoneyAmount operator+ (const MoneyAmount&, const MoneyAmount&);
+  const string operator string();
 
-  friend const MoneyAmount operator- (const MoneyAmount&, const MoneyAmount&);
+  friend const MoneyAmount operator+(const MoneyAmount&, const MoneyAmount&);
 
-  friend MoneyAmount& operator+= (const MoneyAmount&, const MoneyAmount&);
+  friend const MoneyAmount operator-(const MoneyAmount&, const MoneyAmount&);
 
-  friend MoneyAmount& operator-= (const MoneyAmount&, const MoneyAmount&);
+  friend MoneyAmount& operator+=(const MoneyAmount&, const MoneyAmount&);
 
-  friend bool operator== (const MoneyAmount&, const MoneyAmount&);
+  friend MoneyAmount& operator-=(const MoneyAmount&, const MoneyAmount&);
+
+  friend const bool operator==(const MoneyAmount&, const MoneyAmount&);
 
 };
 
