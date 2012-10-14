@@ -1,28 +1,32 @@
 #ifndef _MoneyAmount_hh_
 #define _MoneyAmount_hh_
 
-#include <string>
 #include <sstream>
+#include <string>
+
 #include "Currency.h"
 
 typedef unsigned long long Decimal;
+
 
 class MoneyAmount {
 
 public:
 
   MoneyAmount( Currency&, const Decimal );
+  MoneyAmount( const MoneyAmount& );
   
-  Decimal getAmount() const { return amount; }
-  Currency& getCurrency() const { return currency; }
+  Decimal getAmount() const { return m_amount; }
+  Currency& getCurrency() const { return *m_currency; }
 
   operator std::string();
+
+  void convertCurrencyTo( Currency& );
 
 
   MoneyAmount& operator+=( const MoneyAmount& );
   MoneyAmount& operator-=( const MoneyAmount& );
   MoneyAmount& operator=( const MoneyAmount& );
-
 
   friend const MoneyAmount operator+(const MoneyAmount&, const MoneyAmount&);
   friend const MoneyAmount operator-(const MoneyAmount&, const MoneyAmount&);
@@ -32,8 +36,8 @@ public:
   friend const bool operator==(const MoneyAmount&, const MoneyAmount&);
 
 private:
-  Currency& currency;
-  Decimal amount;
+  Currency *m_currency;
+  Decimal m_amount;
 
   MoneyAmount();
 };

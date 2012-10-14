@@ -10,24 +10,18 @@ public:
   std::string errstr;
 };
 
-class Currency{
-public:
-  Currency( const Currency& src ) {
-    m_name = src.m_name;
-    m_sign = src.m_sign;
-    m_value = src.m_value;
-  }
-	Currency( const std::string& name, const std::string& sign, double value ) {
-		m_value = value;
-		m_sign = sign;
-		m_name = name;
-	}
 
-  friend bool operator ==(const Currency& left, const Currency& right);
+class Currency{
+public:  
+	Currency( const std::string&, const std::string&, double );
+	Currency( const Currency& );
 
 	const std::string& getName() const {return m_name;}
 	const std::string& getSign() const { return m_sign; }
 	double getValue() const { return m_value; };
+  
+
+  	friend bool operator ==(const Currency& left, const Currency& right);
 
 private:
 	std::string m_name;
