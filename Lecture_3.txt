@@ -1,0 +1,15 @@
+Example 1.
+class A
+class B : public A
+class C : public A
+class D : virtual public A, virtual public B
+
+Порядок вызова конструкторов:
+1. A::A();
+2. B::B(); без вызова A::A(), включая конструкторы атр. B
+3. C::C(); без вызова A::A(), 
+4. D::D();
+
+Явный конструктор - explicit
+Значит вызывать конструктор можем только мы, а компилятору запрещено
+
