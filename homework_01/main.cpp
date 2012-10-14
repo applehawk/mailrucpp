@@ -3,13 +3,13 @@
 
 //using namespace std; - not recomended (please, use std:: construction)
 
-typedef long int Date;
 
 #include "MoneyAmount.h"
 #include "Currency.h"
 
 #include "MoneyAmountTests.h"
 
+typedef long int Date;
 
 
 int main(int argc, char* argv[]) {
