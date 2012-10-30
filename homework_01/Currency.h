@@ -19,6 +19,8 @@ public:
 	const std::string& getName() const {return m_name;}
 	const std::string& getSign() const { return m_sign; }
 	double getValue() const { return m_value; };
+	double getFactorForConverting( Currency* ) const;
+
   
 
   	friend bool operator ==(const Currency& left, const Currency& right);

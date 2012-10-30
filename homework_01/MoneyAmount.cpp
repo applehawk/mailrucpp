@@ -20,24 +20,26 @@ MoneyAmount::operator std::string() {
 }
 
 
+ Decimal MoneyAmount::getAmountInCurrency( Currency *new_currency ) const {
+	 double factor = m_currency->getFactorForConverting( new_currency );
+	 return m_amount * factor;
+ }
+
+
  void MoneyAmount::convertCurrencyTo( Currency *new_currency ) {
- 	//*1000000 Временный костыль для точности перевода типа Decimal(long long )
- 	m_amount *= new_currency->getValue() * 1000000 / m_currency->getValue() / 1000000;
+ 	m_amount = getAmountInCurrency( new_currency );
  	m_currency = new_currency;
 
  }
 
 
-
 MoneyAmount& MoneyAmount::operator+=( const MoneyAmount& money_amount ) {
 	//*this = *this + money_amount;  не оптимальная конструкция (вызывается конструктор MoneyAmount)
-	//*1000000 - Временный костыль для точности перевода типа Decimal(long long )
-	//Decimal пока не поддерживает дробные значения, из за чего происходит ошибка в тесте
 
 	if( *m_currency == *( money_amount.m_currency ) ) {
 		m_amount += money_amount.getAmount();
 	} else {
-    	m_amount += ( money_amount.m_amount * 1000000 * m_currency->getValue() / money_amount.m_currency->getValue() / 1000000 ) ;
+    	m_amount += money_amount.getAmountInCurrency( m_currency ) ;
 	}
 
 	return *this;
@@ -46,13 +48,12 @@ MoneyAmount& MoneyAmount::operator+=( const MoneyAmount& money_amount ) {
 
 MoneyAmount& MoneyAmount::operator-=( const MoneyAmount& money_amount ) {
   	//*this = *this - money_amount;	не оптимальная конструкция (вызывается конструктор MoneyAmount)
-	//*1000000 -  Временный костыль для точности перевода типа Decimal(long long )
-	//Decimal пока не поддерживает дробные значения, из за чего происходит ошибка в тесте
+
 
 	if( *m_currency == *( money_amount.m_currency ) ) {
 		m_amount -= money_amount.m_amount;
 	} else {
-    	m_amount -= ( money_amount.m_amount * 1000000 * m_currency->getValue() / money_amount.m_currency->getValue() / 1000000 ) ;
+    	m_amount -= money_amount.getAmountInCurrency( m_currency ) ;
 	}
 
 	return *this;

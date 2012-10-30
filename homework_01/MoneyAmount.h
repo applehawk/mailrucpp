@@ -16,8 +16,10 @@ public:
   MoneyAmount( Currency*, const Decimal );
   MoneyAmount( const MoneyAmount& );
   
-  Decimal getAmount() const { return m_amount; }
   Currency* getCurrency() const { return m_currency; }
+  Decimal getAmount() const { return m_amount; }
+
+  Decimal getAmountInCurrency( Currency* ) const;
 
   operator std::string();
 

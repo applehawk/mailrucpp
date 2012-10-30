@@ -16,6 +16,11 @@ Currency::Currency( const Currency& src ) {
 }
 
 
+double Currency::getFactorForConverting( Currency *new_currency ) const {
+	return new_currency->getValue() / m_value;
+}
+
+
 bool operator==( const Currency& left, const Currency& right){
   return ( (left.getValue() == right.getValue()) && 
         ( left.getName() == right.getName() ) && 
