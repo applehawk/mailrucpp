@@ -16,6 +16,7 @@ Currency::Currency( const Currency& src ) {
 }
 
 
+
 double Currency::getFactorForConverting( Currency *new_currency ) const {
 	return new_currency->getValue() / m_value;
 }

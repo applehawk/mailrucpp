@@ -5,14 +5,19 @@
 #include <string>
 
 #include "Currency.h"
+#include "DefaultCurrency.h"
 
 typedef unsigned long long Decimal;
 
 
 class MoneyAmount {
 
-public:
 
+
+public:
+  static Currency default_currency; //TODO
+
+  MoneyAmount();
   MoneyAmount( Currency*, const Decimal );
   MoneyAmount( const MoneyAmount& );
   
@@ -37,12 +42,14 @@ public:
   friend const MoneyAmount operator/(const MoneyAmount&, double);
   friend const bool operator==(const MoneyAmount&, const MoneyAmount&);
 
+
 private:
   Currency *m_currency;
   Decimal m_amount;
 
-  MoneyAmount(){}
+
 };
+
 
 #endif /* _MoneyAmount_hh_ */
 

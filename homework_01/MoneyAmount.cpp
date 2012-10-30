@@ -1,6 +1,12 @@
 #include "MoneyAmount.h"
 
 
+MoneyAmount::MoneyAmount() {
+	m_amount = 0;
+	m_currency = new DefaultCurrency();	//TODO:Replace on static member
+}
+
+
 MoneyAmount::MoneyAmount( Currency *currency, const Decimal amount ) {
 	m_amount = amount;
 	m_currency = currency;

@@ -12,7 +12,7 @@ public:
 
 
 class Currency{
-public:  
+public:
 	Currency( const std::string&, const std::string&, double );
 	Currency( const Currency& );
 
@@ -21,16 +21,15 @@ public:
 	double getValue() const { return m_value; };
 	double getFactorForConverting( Currency* ) const;
 
-  
+
 
   	friend bool operator ==(const Currency& left, const Currency& right);
 
-private:
+protected:
 	std::string m_name;
 	std::string m_sign;	//Sign of currency
 	double m_value;
 
-	Currency(); //Deny of default constructor
 
 };
 

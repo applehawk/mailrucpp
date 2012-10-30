@@ -8,6 +8,7 @@
 #include "Currency.h"
 
 #include "MoneyAmountTests.h"
+#include "AccountTransactionsTests.h"
 
 typedef long int Date;
 
@@ -18,6 +19,8 @@ int main(int argc, char* argv[]) {
   test_MultMoneyAmounts();
   test_ConvertCurrency();
   test_AddSubWithAssign_NotEqualCurrency();
+
+  test_Transaction();
 
   return 0;
 }
