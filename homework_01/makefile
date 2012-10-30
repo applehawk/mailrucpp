@@ -1,8 +1,11 @@
-test: main.o MoneyAmount.o Currency.o Account.o
+test: main.o MoneyAmount.o Currency.o Account.o Transaction.o
 	g++ -Wall main.o MoneyAmount.o Currency.o -o test;
 	
 main.o: main.cpp MoneyAmount.h Currency.h MoneyAmountTests.h
 	g++ -Wall -c main.cpp -o main.o
+	
+Transaction.o: Transaction.cpp Transaction.h Account.h MoneyAmount.h
+	g++ -Wall -c Transaction.cpp -o Transaction.o
 
 MoneyAmount.o: MoneyAmount.cpp MoneyAmount.h Currency.h
 	g++ -Wall -c MoneyAmount.cpp -o MoneyAmount.o
