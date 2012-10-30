@@ -13,15 +13,15 @@ class MoneyAmount {
 
 public:
 
-  MoneyAmount( Currency&, const Decimal );
+  MoneyAmount( Currency*, const Decimal );
   MoneyAmount( const MoneyAmount& );
   
   Decimal getAmount() const { return m_amount; }
-  Currency& getCurrency() const { return *m_currency; }
+  Currency* getCurrency() const { return m_currency; }
 
   operator std::string();
 
-  void convertCurrencyTo( Currency& );
+ void convertCurrencyTo( Currency* );
 
 
   MoneyAmount& operator+=( const MoneyAmount& );
@@ -39,7 +39,7 @@ private:
   Currency *m_currency;
   Decimal m_amount;
 
-  MoneyAmount();
+  MoneyAmount(){}
 };
 
 #endif /* _MoneyAmount_hh_ */

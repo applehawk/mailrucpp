@@ -1,15 +1,15 @@
 #include "MoneyAmount.h"
 
 
-MoneyAmount::MoneyAmount( Currency& _currency, const Decimal _amount ) {
-	m_amount = _amount;
-	m_currency = &_currency;
+MoneyAmount::MoneyAmount( Currency *currency, const Decimal amount ) {
+	m_amount = amount;
+	m_currency = currency;
 }
 
 
  MoneyAmount::MoneyAmount( const MoneyAmount& src ) {
- 	m_amount = src.getAmount();
-	*m_currency = src.getCurrency();
+ 	m_amount = src.m_amount;
+	m_currency = src.m_currency;
  }
 
 
@@ -20,10 +20,10 @@ MoneyAmount::operator std::string() {
 }
 
 
- void MoneyAmount::convertCurrencyTo( Currency& new_currency ) {
+ void MoneyAmount::convertCurrencyTo( Currency *new_currency ) {
  	//*1000000 Временный костыль для точности перевода типа Decimal(long long )
- 	m_amount *= new_currency.getValue() * 1000000 / m_currency -> getValue() / 1000000;
- 	m_currency = &new_currency;
+ 	m_amount *= new_currency->getValue() * 1000000 / m_currency->getValue() / 1000000;
+ 	m_currency = new_currency;
 
  }
 
@@ -34,10 +34,10 @@ MoneyAmount& MoneyAmount::operator+=( const MoneyAmount& money_amount ) {
 	//*1000000 - Временный костыль для точности перевода типа Decimal(long long )
 	//Decimal пока не поддерживает дробные значения, из за чего происходит ошибка в тесте
 
-	if( (*m_currency) == money_amount.getCurrency() ) {
+	if( *m_currency == *( money_amount.m_currency ) ) {
 		m_amount += money_amount.getAmount();
 	} else {
-    	m_amount += ( money_amount.getAmount() * 1000000 * m_currency->getValue() / money_amount.m_currency->getValue() / 1000000 ) ;
+    	m_amount += ( money_amount.m_amount * 1000000 * m_currency->getValue() / money_amount.m_currency->getValue() / 1000000 ) ;
 	}
 
 	return *this;
@@ -49,10 +49,10 @@ MoneyAmount& MoneyAmount::operator-=( const MoneyAmount& money_amount ) {
 	//*1000000 -  Временный костыль для точности перевода типа Decimal(long long )
 	//Decimal пока не поддерживает дробные значения, из за чего происходит ошибка в тесте
 
-	if( (*m_currency) == money_amount.getCurrency() ) {
-		m_amount -= money_amount.getAmount();
+	if( *m_currency == *( money_amount.m_currency ) ) {
+		m_amount -= money_amount.m_amount;
 	} else {
-    	m_amount -= ( money_amount.getAmount() * 1000000 * m_currency->getValue() / money_amount.m_currency->getValue() / 1000000 ) ;
+    	m_amount -= ( money_amount.m_amount * 1000000 * m_currency->getValue() / money_amount.m_currency->getValue() / 1000000 ) ;
 	}
 
 	return *this;
@@ -65,7 +65,7 @@ MoneyAmount& MoneyAmount::operator=( const MoneyAmount& money_amount ) {
         return *this;
     }
 
-    m_amount = money_amount.getAmount();
+    m_amount = money_amount.m_amount;
     m_currency = money_amount.m_currency;
 
     return *this;
@@ -76,13 +76,13 @@ MoneyAmount& MoneyAmount::operator=( const MoneyAmount& money_amount ) {
 //Global binary operation for class============================================
 
 const bool operator==( const MoneyAmount &first_ma, const MoneyAmount &second_ma ) {
-	return ( ( first_ma.getCurrency() == second_ma.getCurrency() ) &&
+	return ( ( *(first_ma.getCurrency()) == *(second_ma.getCurrency()) ) &&
 			 ( first_ma.getAmount() == second_ma.getAmount() ) );
 }
 
 
 const MoneyAmount operator+( const MoneyAmount &first_ma, const MoneyAmount &second_ma ) {
-	if ( first_ma.getCurrency() == second_ma.getCurrency() ) {
+	if ( *(first_ma.getCurrency()) == *(second_ma.getCurrency()) ) {
 		return MoneyAmount( first_ma.getCurrency(), first_ma.getAmount() + second_ma.getAmount() );
 	} else {
 		//Exeption or conver of currency;
@@ -92,7 +92,7 @@ const MoneyAmount operator+( const MoneyAmount &first_ma, const MoneyAmount &sec
 
 
 const MoneyAmount operator-(const MoneyAmount &first_ma, const MoneyAmount &second_ma ) {
-	if ( first_ma.getCurrency() == second_ma.getCurrency() ) {
+	if ( *(first_ma.getCurrency()) == *(second_ma.getCurrency()) ) {
 	return MoneyAmount( first_ma.getCurrency(), first_ma.getAmount() - second_ma.getAmount() );
   } else {
 		//Exeption or conver of currency;
