@@ -16,8 +16,8 @@ public:
 	Currency( const std::string&, const std::string&, double );
 	Currency( const Currency& );
 
-	const std::string& getName() const {return m_name;}
-	const std::string& getSign() const { return m_sign; }
+	const std::string getName() const {return m_name;}
+	const std::string getSign() const { return m_sign; }
 	double getValue() const { return m_value; };
 	double getFactorForConverting( Currency* ) const;
 

@@ -9,6 +9,7 @@
 
 #include "MoneyAmountTests.h"
 #include "AccountTransactionsTests.h"
+#include "BankTests.h"
 
 typedef long int Date;
 
@@ -19,8 +20,12 @@ int main(int argc, char* argv[]) {
   test_MultMoneyAmounts();
   test_ConvertCurrency();
   test_AddSubWithAssign_NotEqualCurrency();
+  std::cout << std::endl;
 
   test_Transaction();
+  std::cout << std::endl;
+
+  test_Bank();
 
   return 0;
 }

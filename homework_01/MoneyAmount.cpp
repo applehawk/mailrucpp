@@ -12,6 +12,11 @@ MoneyAmount::MoneyAmount( Currency *currency, const Decimal amount ) {
 	m_currency = currency;
 }
 
+MoneyAmount::MoneyAmount( Currency *currency ) {
+	m_amount = 0;
+	m_currency = currency;
+}
+
 
  MoneyAmount::MoneyAmount( const MoneyAmount& src ) {
  	m_amount = src.m_amount;

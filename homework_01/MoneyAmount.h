@@ -18,6 +18,7 @@ public:
   static Currency default_currency; //TODO
 
   MoneyAmount();
+  MoneyAmount( Currency* );
   MoneyAmount( Currency*, const Decimal );
   MoneyAmount( const MoneyAmount& );
   
