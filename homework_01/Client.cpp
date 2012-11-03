@@ -1,7 +1,7 @@
 #include "Bank.h"
 
 
-Client::Client(const std::string& first_name, const std::string& second_name, Bank* bank):Person( first_name, second_name ) {
+Client::Client(const std::string& first_name, const std::string& second_name, const std::string& birth, Bank* bank):Person( first_name, second_name, birth ) {
 	m_bank = bank;
 }
 

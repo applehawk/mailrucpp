@@ -17,7 +17,7 @@ class Bank;
 
 class Client: public Person {
 public:
-	Client( const std::string&, const std::string&, Bank* );
+	Client( const std::string&, const std::string&, const std::string&, Bank* );
 	int getMainAccountId() const;
 	Account* getMainAccount() const;
 	int createAccount();

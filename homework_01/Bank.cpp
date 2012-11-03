@@ -10,8 +10,8 @@ Bank::Bank() {
 
 
 
-int Bank::createClient( const std::string &first_name, const std::string &second_name ) {
-	Client *client = new Client( first_name, second_name, this );
+int Bank::createClient( const std::string &first_name, const std::string &second_name, const std::string &birth ) {
+	Client *client = new Client( first_name, second_name, birth, this );
 	int client_id = m_clients.size();
 
 	m_clients.insert( std::pair<int, Client*>( client_id, client ) );

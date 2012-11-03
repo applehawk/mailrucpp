@@ -2,22 +2,26 @@
 
 Account::Account() {
 	m_money_amount = MoneyAmount();
+	m_created = time(0);
 	m_bank = NULL;
 }
 
 Account::Account( Bank* bank ) {
 	m_money_amount = MoneyAmount();
+	m_created = time(0);
 	m_bank = bank;
 }
 
 
 Account::Account( const MoneyAmount &money_amount, Bank* bank ) {
 	setMoneyAmount( money_amount );
+	m_created = time(0);
 	m_bank = bank;
 }
 
 Account::Account( Currency *currency, Bank* bank ) {
 	setMoneyAmount( MoneyAmount( currency ) );
+	m_created = time(0);
 	m_bank = bank;
 }
 

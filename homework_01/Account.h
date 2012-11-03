@@ -6,7 +6,7 @@
 #define _Account_hh_
 
 #include <vector>
-#include <time.h>
+#include <ctime>
 
 class Transaction;
 
@@ -38,7 +38,7 @@ protected:
     MoneyAmount m_money_amount;
     std::vector <Transaction*> m_transactions;
     Bank *m_bank;
-    //std::time_t m_created; //TODO
+    time_t m_created;
 
 };
 

@@ -19,7 +19,7 @@ class Bank {
 public:
 	Bank();
 
-	int createClient( const std::string&, const std::string& );
+	int createClient( const std::string&, const std::string&, const std::string& );
 	int addAccountInBase( Account* );
 	Client* getClientById( const int ) const;
 	Account* getAccountById( const int ) const;
