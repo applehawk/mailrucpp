@@ -6,6 +6,7 @@
 
 int test_Transaction(){
   try {
+    std::cout<<"Transaction tests began:" << std::endl;
     Currency usd( "USD", "$", 1.0 );
     MoneyAmount money_amount_begin( &usd, 100.0 );
     MoneyAmount money_amount_send( &usd, 50.0 );
@@ -36,5 +37,6 @@ int test_Transaction(){
   } catch(...) {
     std::cout << "Exception: test_Transaction";
   }
+  std::cout<< std::endl << "Transaction tests finished" << std::endl << std::endl << std::endl;
   return 0;
 };

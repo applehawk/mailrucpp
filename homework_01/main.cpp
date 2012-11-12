@@ -10,22 +10,16 @@
 #include "MoneyAmountTests.h"
 #include "AccountTransactionsTests.h"
 #include "BankTests.h"
+#include "PersonTests.h"
+
 
 typedef long int Date;
 
 
 int main(int argc, char* argv[]) {
-  test_Add2MoneyAmounts_EqualCurrency();
-  test_Add2MoneyAmounts_NotEqualCurrency();
-  test_MultMoneyAmounts();
-  test_ConvertCurrency();
-  test_AddSubWithAssign_NotEqualCurrency();
-  std::cout << std::endl;
-
+  test_MoneyAmount();
   test_Transaction();
-  std::cout << std::endl;
-
   test_Bank();
-
+  test_Person();
   return 0;
 }

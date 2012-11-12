@@ -15,7 +15,6 @@ public:
 	void showError() const {
 		std::cout << "Year should be integer in range from 1920 to 1994"<< std::endl;
 		std::cout << "Input year is " << year << std::endl;
-		throw;
 	}
 private:
 	int year;

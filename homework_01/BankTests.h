@@ -6,7 +6,7 @@
 
 int test_Bank() {
 	try{
-		std::cout << "test_Bank" << std::endl;
+	    std::cout<<"Bank tests began:" << std::endl;
 
 		Bank bank;
 		Currency *usd_curr = bank.getCurrencyByName("USD");
@@ -38,6 +38,6 @@ int test_Bank() {
 	}catch(...){
 		std::cout << "Exeption::test_bank";
 	}
-
+    std::cout<<"Bank tests finished" << std::endl << std::endl << std::endl;
 	return 0;
 }

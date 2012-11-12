@@ -1,6 +1,7 @@
 #include "MoneyAmount.h"
 #include "Currency.h"
 
+
 int test_Add2MoneyAmounts_EqualCurrency()
 {
   try {
@@ -93,4 +94,15 @@ int test_AddSubWithAssign_NotEqualCurrency(){
     std::cout << "Exception: test_AddSubWithAssign_NotEqualCurrency " << std::endl;
   }
    return 0;
+}
+
+int test_MoneyAmount(){
+	std::cout<<"MoneyAmount tests began:" << std::endl;
+	test_Add2MoneyAmounts_EqualCurrency();
+	test_Add2MoneyAmounts_NotEqualCurrency();
+	test_MultMoneyAmounts();
+	test_ConvertCurrency();
+	test_AddSubWithAssign_NotEqualCurrency();
+	std::cout<<"MoneyAmount tests finished" << std::endl << std::endl << std::endl;
+	return 0;
 }
