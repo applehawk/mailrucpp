@@ -1,18 +1,23 @@
 #ifndef _AccountsOwner_hh_
 #define _AccountsOwner_hh_
 
-#include <vector>
+#include "AccountsOwner.h"
+#include "MoneyAmount.h"
+#include "Account.h"
+#include "Bank.h"
 
 class AccountsOwner {
 
   protected:
-    std::vector <Account*> accounts;
+    std::vector <Account*> m_accounts;
 
 
   public:
-    void get_money(Account* account, MoneyAmount money_amount);
-    void put_money(Account account, MoneyAmount money_amount);
-    void show_accounts();
+    void getMoney(Account account, MoneyAmount money_amount);
+    void putMoney(Account account, MoneyAmount money_amount);
+    void addAccount(Account&);
+    void deleteAccout(const Currency);
+    void showAccounts();
 
 
 };

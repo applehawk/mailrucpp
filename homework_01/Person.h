@@ -20,7 +20,7 @@ public:
 	}
 	void changeFirstName(std::string str) {m_first_name = str;}
 	void changeSecondName(std::string str) {m_second_name = str;}
-	void chaneDateOfBirth(std::string str) {m_birth = encode(str);}
+	void chanegeDateOfBirth(std::string str) {m_birth = encode(str);}
 	void printPerson();
 
 protected:

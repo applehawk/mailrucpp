@@ -1,4 +1,5 @@
 #include "Person.h"
+#include "Error.h"
 #include <iostream>
 #include <sstream>
 #include <ctime>
@@ -8,7 +9,8 @@ time_t Person::encode(std::string date){
 	int day = convert(0, 2, date);
 	int month = convert(3, 5, date);
 	int year = convert(6, 9, date);
-	//std::cout << "Day: " << day<< "  " << "Month: " << month << "  " << "Year: " << year << std::endl;
+	if ((year>1994) || (year<1900)) throw ErrorPersonDateYear(year);
+	//std::cout << "Day: " << day)<< "  " << "Month: " << month << "  " << "Year: " << year << std::endl;
 
 	time_t rawtime;
 	struct tm * timeinfo;

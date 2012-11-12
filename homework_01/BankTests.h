@@ -15,9 +15,9 @@ int test_Bank() {
 		MoneyAmount sended_money_amount( usd_curr, 100.0 );
 
 
-		int id_client1 = bank.createClient( "Jhon", "Bross" );
+		int id_client1 = bank.createClient( "Jhon", "Bross", "02.12.1990" );
 		std::cout << "Created client Jhon Bross. id = " << id_client1 << std::endl;
-		int id_client2 = bank.createClient( "Victor", "Calugin" );
+		int id_client2 = bank.createClient( "Victor", "Calugin", "02.12.1990" );
 		std::cout << "Created client Victor Calugin. id = " << id_client2 << std::endl;
 
 		bank.getClientById( id_client1 )->createAccount( MoneyAmount( usd_curr, 200.0 ) );
