@@ -1,23 +1,27 @@
 #ifndef _AccountsOwner_hh_
 #define _AccountsOwner_hh_
 
-#include "AccountsOwner.h"
-#include "MoneyAmount.h"
-#include "Account.h"
-#include "Bank.h"
+//#include "Account.h"
+
+class Account;
+
+#include <map>
 
 class AccountsOwner {
 
   protected:
-    std::vector <Account*> m_accounts;
+    std::map <int, Account*> m_accounts;
+    int max_id;
 
 
   public:
-    void getMoney(Account account, MoneyAmount money_amount);
-    void putMoney(Account account, MoneyAmount money_amount);
-    void addAccount(Account&);
-    void deleteAccout(const Currency);
-    void showAccounts();
+    void addAccount( int, Account* );
+    Account* getAccountById( int ) const;
+    Account* getMainAccount() const;
+    bool hasAccountById( int ) const;
+    void removeAccountById( int );
+    int getMaxId() const;
+    int size() const;
 
 
 };

@@ -10,20 +10,22 @@
 
 class Account;
 
+#include "AccountsOwner.h"
+
 #include "Client.h"
 #include "Currency.h"
 #include "Account.h"
 
 
-class Bank {
+
+class Bank: public AccountsOwner {
 public:
 	Bank();
 
 	int createClient( const std::string&, const std::string&, const std::string& );
-	int addAccountInBase( Account* );
 	Client* getClientById( const int ) const;
-	Account* getAccountById( const int ) const;
 	Currency* getCurrencyByName( const std::string& ) const;
+	int generateAccountId() const;
 
 	void addCurrency( Currency* );
 

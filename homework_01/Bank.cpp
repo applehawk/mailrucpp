@@ -20,15 +20,6 @@ int Bank::createClient( const std::string &first_name, const std::string &second
 }
 
 
-int Bank::addAccountInBase( Account* account ) {
-	int account_id = m_accounts.size();
-
-	m_accounts.insert( std::pair<int, Account*>( account_id, account ) );
-
-	return account_id;
-}
-
-
 Client* Bank::getClientById( const int client_id ) const {
 	if ( m_clients.find( client_id ) != m_clients.end() ) {
 		return m_clients.find( client_id )->second;
@@ -37,6 +28,8 @@ Client* Bank::getClientById( const int client_id ) const {
 		return NULL;
 	}
 }
+
+
 
 
 Currency* Bank::getCurrencyByName( const std::string &name ) const {
@@ -48,13 +41,8 @@ Currency* Bank::getCurrencyByName( const std::string &name ) const {
 	}
 }
 
-Account* Bank::getAccountById( const int account_id ) const {
-	if ( m_accounts.find( account_id ) != m_accounts.end() ) {
-		return m_accounts.find( account_id )->second;
-	} else {
-		//Exeption; TODO
-		return NULL;
-	}
+int Bank::generateAccountId() const {
+	return getMaxId() + 1;
 }
 
 void Bank::addCurrency( Currency *currency ) {

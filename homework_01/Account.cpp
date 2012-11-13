@@ -1,28 +1,44 @@
 #include "Account.h"
 
-Account::Account() {
-	m_money_amount = MoneyAmount();
-	m_created = time(0);
-	m_bank = NULL;
-}
 
-Account::Account( Bank* bank ) {
-	m_money_amount = MoneyAmount();
+Account::Account( int account_id, Client* owner ) {
+	m_bank = owner->getBank();
+	m_owner = owner;
 	m_created = time(0);
-	m_bank = bank;
+	m_id = account_id;
 }
 
 
-Account::Account( const MoneyAmount &money_amount, Bank* bank ) {
+Account::Account( const MoneyAmount &money_amount, int account_id, Client* owner ) {
 	setMoneyAmount( money_amount );
 	m_created = time(0);
-	m_bank = bank;
+	m_bank = owner->getBank();
+	m_owner = owner;
+	m_id = account_id;
 }
 
-Account::Account( Currency *currency, Bank* bank ) {
+Account::Account( Currency *currency, int account_id, Client* owner ) {
 	setMoneyAmount( MoneyAmount( currency ) );
 	m_created = time(0);
-	m_bank = bank;
+	m_bank = owner->getBank();
+	m_owner = owner;
+	m_id = account_id;
+}
+
+
+Account::~Account(){
+	if ( m_owner->hasAccountById( m_id ) ) {
+		m_owner->removeAccountById( m_id );
+	}
+
+	if ( m_bank->hasAccountById( m_id ) ) {
+		m_bank->removeAccountById( m_id );
+	}
+}
+
+
+int Account::getId() const {
+	return m_id;
 }
 
 MoneyAmount Account::getMoneyAmount() const {

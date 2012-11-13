@@ -9,20 +9,20 @@
 class Account;
 class Bank;
 
+#include "AccountsOwner.h"
 #include "Bank.h"
 #include "Person.h"
 #include "Account.h"
 #include "Currency.h"
 #include "MoneyAmount.h"
 
-class Client: public Person {
+class Client: public Person, public AccountsOwner {
 public:
 	Client( const std::string&, const std::string&, const std::string&, Bank* );
-	int getMainAccountId() const;
-	Account* getMainAccount() const;
 	int createAccount();
 	int createAccount( Currency* );
 	int createAccount( const MoneyAmount& );
+	Bank* getBank() const;
 
 
 protected:

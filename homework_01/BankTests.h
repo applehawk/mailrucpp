@@ -22,11 +22,12 @@ int test_Bank() {
 
 		bank.getClientById( id_client1 )->createAccount( MoneyAmount( usd_curr, 200.0 ) );
 		std::cout << "Jhon Bross(" << id_client1 << ") has " << std::string( bank.getClientById( id_client1 )->getMainAccount()->getMoneyAmount() ) << std::endl;
+
 		bank.getClientById( id_client2 )->createAccount( MoneyAmount( eur_curr, 100.0 ) );
 		std::cout << "Victor Calugin(" << id_client2 << ") has " << std::string( bank.getClientById( id_client2 )->getMainAccount()->getMoneyAmount() ) << std::endl;
 		std::cout << std::endl;
 
-		int account_id2 = bank.getClientById( id_client2 )->getMainAccountId();
+		int account_id2 = bank.getClientById( id_client2 )->getMainAccount()->getId();
 
 		bank.getClientById( id_client1 )->getMainAccount()->initTransactionToById( account_id2, sended_money_amount );
 		std::cout << "Inited transaction " << std::string( sended_money_amount ) << " from  Jhon Bross to Victor Calugin" << std::endl;
