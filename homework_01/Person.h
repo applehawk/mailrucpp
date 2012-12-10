@@ -22,6 +22,8 @@ public:
 	void changeSecondName(std::string str) {m_second_name = str;}
 	void chanegeDateOfBirth(std::string str) {m_birth = encode(str);}
 	void printPerson();
+	const static short year_begin = 1900;
+	const static short year_end = 2000;
 
 protected:
     std::string m_first_name;

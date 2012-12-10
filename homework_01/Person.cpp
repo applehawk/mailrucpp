@@ -9,7 +9,7 @@ time_t Person::encode(std::string date){
 	int day = convert(0, 2, date);
 	int month = convert(3, 5, date);
 	int year = convert(6, 9, date);
-	if ((year>1994) || (year<1900)) throw ErrorPersonDateYear(year);
+	if ((year > year_end) || (year < year_begin)) throw ErrorPersonDateYear(year);
 	//std::cout << "Day: " << day)<< "  " << "Month: " << month << "  " << "Year: " << year << std::endl;
 
 	time_t rawtime;

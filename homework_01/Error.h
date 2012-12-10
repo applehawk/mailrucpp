@@ -1,4 +1,5 @@
 #include <iostream>
+#include "person.h"
 class Error
 {
 public:
@@ -13,7 +14,7 @@ class ErrorPersonDateYear: public ErrorPersonDate {
 public:
 	ErrorPersonDateYear(int _year): year(_year){}
 	void showError() const {
-		std::cout << "Year should be integer in range from 1920 to 1994"<< std::endl;
+		std::cout << "Year should be integer in range from " << Person::year_begin << " to " << Person::year_end << std::endl;
 		std::cout << "Input year is " << year << std::endl;
 	}
 private:
