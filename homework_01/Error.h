@@ -1,3 +1,6 @@
+#ifndef _Error_hh_
+#define _Error_hh_
+
 #include <iostream>
 #include "person.h"
 class Error
@@ -20,3 +23,5 @@ public:
 private:
 	int year;
 };
+
+#endif /* _Error_hh_ */

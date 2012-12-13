@@ -5,7 +5,11 @@
 class Account;
 
 #include "Account.h"
+#include "Error.h"
 #include "MoneyAmount.h"
+
+
+class ErrorTransactionNotCommited: public Error {};
 
 
 class Transaction {
@@ -16,13 +20,17 @@ class Transaction {
 	Transaction( Account *src, Account *dst, const MoneyAmount &money_amount );
 
 	void commit();
+	time_t getCommitTime() const throw( ErrorTransactionNotCommited );
+	bool isCommited() const throw();
 
   protected:
-	bool is_commited;
     Account* m_source_account;
     Account* m_destination_account;
     MoneyAmount m_money_amount;
-   // time_t time; //TODO
+
+    time_t m_commited;
+    const static time_t not_commited_time = 0;
+
 
 };
 
