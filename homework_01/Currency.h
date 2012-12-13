@@ -3,7 +3,7 @@
 
 #include <string>
 
-class CurrExcp
+class CurrExcp // TODO Put to Error.h
 {
 public:
   CurrExcp(const std::string& _excp): errstr(_excp) {}

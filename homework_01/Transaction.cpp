@@ -10,10 +10,14 @@ Transaction::Transaction( Account *src, Account *dst, const MoneyAmount &money_a
 
 
 void Transaction::commit() {
+	commit( std::time( NULL ) );
+}
+
+void Transaction::commit( time_t time ) {
 	m_source_account->m_money_amount -= m_money_amount;
 	m_destination_account->m_money_amount += m_money_amount;
 
-	m_commited = std::time( NULL );
+	m_commited = time;
 }
 
 time_t Transaction::getCommitTime() const throw( ErrorTransactionNotCommited ) {

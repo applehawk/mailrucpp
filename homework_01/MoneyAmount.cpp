@@ -84,6 +84,16 @@ MoneyAmount& MoneyAmount::operator=( const MoneyAmount& money_amount ) {
 }
 
 
+const MoneyAmount& operator+( const MoneyAmount &money_amount ) {
+	return money_amount;
+}
+
+
+const MoneyAmount operator-( const MoneyAmount &money_amount ) {
+	return MoneyAmount( money_amount.m_currency, -money_amount.m_amount );
+}
+
+
 
 //Global binary operation for class============================================
 

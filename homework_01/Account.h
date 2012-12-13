@@ -34,6 +34,8 @@ public:
 
     void initTransactionTo( Account*, const MoneyAmount& );
     void initTransactionToById( int, const MoneyAmount&  );
+    void initTransactionTo( Account*, const MoneyAmount&, time_t time );
+    void initTransactionToById( int, const MoneyAmount&, time_t time );
 
     ~Account();
 

@@ -7,7 +7,7 @@
 #include "Currency.h"
 #include "DefaultCurrency.h"
 
-typedef unsigned long long Decimal;
+typedef long long Decimal;
 
 
 class MoneyAmount {
@@ -36,6 +36,8 @@ public:
   MoneyAmount& operator-=( const MoneyAmount& );
   MoneyAmount& operator=( const MoneyAmount& );
 
+  friend const MoneyAmount& operator+(const MoneyAmount&);
+  friend const MoneyAmount operator-(const MoneyAmount&);
   friend const MoneyAmount operator+(const MoneyAmount&, const MoneyAmount&);
   friend const MoneyAmount operator-(const MoneyAmount&, const MoneyAmount&);
   friend const MoneyAmount operator*(const MoneyAmount&, double);
